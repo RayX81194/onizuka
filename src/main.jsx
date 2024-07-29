@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './components/Home'
-import Anime from './components/Anime'
-import Manga from './components/Manga'
-import Info from "./components/Info";
+import TopAnime from './components/TopAnime'
+import TopManga from './components/TopManga'
+import Anime from "./components/Anime";
+import Manga from "./components/Manga";
 import Error from "./components/Error";
 import Results from './components/Results';
 import './index.css'
@@ -16,14 +17,14 @@ const router = createBrowserRouter([
     errorElement:<Error />
 },
 {
-  path:"/onizuka/anime",
-  element: <Anime/>,
+  path:"/onizuka/topanime",
+  element: <TopAnime/>,
   errorElement:<Error />
   
 },
 {
-  path:"/onizuka/manga",
-  element: <Manga />,
+  path:"/onizuka/topmanga",
+  element: <TopManga />,
   errorElement:<Error />
 },
 {
@@ -32,8 +33,13 @@ const router = createBrowserRouter([
   errorElement: <Error />
 },
 {
-  path: "/onizuka/info/:searchid",
-  element: <Info />,
+  path: "/onizuka/anime/:searchid",
+  element: <Anime />,
+  errorElement: <Error />
+},
+{
+  path: "/onizuka/manga/:searchid",
+  element: <Manga />,
   errorElement: <Error />
 },
 ])
