@@ -1,8 +1,28 @@
-# React + Vite
+# Onizuka - A Anime and Manga Search Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web application that displays detailed information about various anime series. It fetches data from the Jikan API and presents it in a user-friendly manner with features like a "Read More" functionality for descriptions and uniform image display.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Anime Details**: Displays detailed information about each anime including title, synopsis, genres, ranking, score, status, source, and episodes.
+- **Responsive Design**: Ensures uniform display of anime images regardless of their original dimensions.
+- **Read More/Less**: Implements a toggle for expanding and collapsing long descriptions.
+- **Streaming Links**: Provides links to platforms where the anime can be streamed.
+- **Watch Trailer**: Directs users to watch trailers of the anime.
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for styling.
+- **Jikan API**: A RESTful API for fetching data from MyAnimeList.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm (Node Package Manager)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
