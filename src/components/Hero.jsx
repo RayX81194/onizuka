@@ -28,7 +28,7 @@ const Hero = () => {
 
   return (
     <div className='text-white flex flex-col text-center items-center justify-center py-10'>
-      <h1 className='text-blue-500 text-[3rem] xl:text-[4rem] font-bold '>
+      <h1 className='text-blue-600 text-[3rem] xl:text-[4rem] font-bold '>
         鬼塚
       </h1>
       <p className='text-zinc-500 font-medium mb-7 text-[1.2rem] max-w-[300px] md:max-w-[400px] xl:max-w-full md:text-[1.4rem]'>Find Anime anywhere, anytime, anyplace</p>
@@ -45,7 +45,7 @@ const Hero = () => {
         </div>
       </form>
       <div className='text-start my-3 '>
-        <h2 className='font-normal text-zinc-400'>Trending Anime</h2>
+        <h2 className='font-normal text-zinc-400'>Trending Searches</h2>
       </div>
       <div className='grid md:grid-cols-2 gap-x-3'>
         {topAnime.map(anime => (

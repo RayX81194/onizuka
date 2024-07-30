@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import play from '../assets/play.svg'
 import { useParams } from 'react-router-dom';
 
 const Info = () => {
@@ -48,6 +49,12 @@ const Info = () => {
               />
             </div>
               <div className='mt-5'>
+              <a className='text-white r' href={animeInfo.trailer.embed_url}>
+                <div className='flex mb-5 py-2 items-center justify-center gap-x-2 bg-blue-600 transition hover:bg-blue-700  rounded-md'>
+                <img src={play} className='w-[20px] h-[20px]' />
+                <p>Watch Trailer</p>
+                </div>
+              </a>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[17px] text-zinc-300 font-normal'>Rank</h1>
                 <h1 className='text-[17px] text-white font-medium'>{animeInfo.rank}</h1>
@@ -71,8 +78,7 @@ const Info = () => {
               </div>
           </div>
           <div>
-          <a className='text-white bg-zinc-700 rounded-md px-3 py-2' href={animeInfo.trailer.embed_url}>Watch Trailer</a>
-        <ul className='flex mt-7 gap-x-5'>
+        <ul className='flex gap-x-5'>
           {animeInfo.genres?.map((anime, index) => (
             <li key={index} className=' px-3 py-1 bg-blue-800 bg-opacity-30 text-blue-500 text-[12px] rounded-xl font-bold'>{anime.name}</li>
           ))}
@@ -92,7 +98,7 @@ const Info = () => {
           <ul className='grid grid-cols-5  max-w-[900px] mt-5 gap-y-2  gap-x-5'>
             {animeInfo.streaming.map(anime => (
               <a href={anime.url} >
-              <li className='underline text-zinc-300 font-normal'>{anime.name}</li> 
+              <li className=' hover:text-blue-600 hover:underline transition text-blue-500 font-normal'>{anime.name}</li> 
               </a>
             ))}
           </ul>

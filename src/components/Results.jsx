@@ -53,7 +53,7 @@ const Results = () => {
     <div className='grid px-10 mt-8 grid-cols-5 gap-y-5 gap-x-20 items-center'>
         {results.map(anime => (
           <div>
-          <a key={anime.mal_id} href= {`/onizuka/info/${anime.mal_id}`}>
+          <a key={anime.mal_id} href= {`/onizuka/anime/${anime.mal_id}`}>
           <img src={anime.images.webp.image_url} className='rounded-md w-[225px] h-[318px]' />
           <li className='text-white font-medium max-w-[220px]'>{anime.title}</li>
           </a>
