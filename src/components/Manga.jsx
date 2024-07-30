@@ -19,17 +19,17 @@ const InfoManga = () => {
       .then(data => {
         setMangaInfo(data.data);
         console.log(data)
-        setLoading(false);
+        setLoading(false)
       })
       .catch(error => {
         console.error('Error fetching data:', error);
         setMangaInfo({});
-        setLoading(false);
+        setLoading(false)
       });
   }, [searchid]);
 
   if (loading) {
-    return <div className='text-white'>Loading...</div>;
+    return <div className='w-full h-screen bg bg-zinc-900'>Loading...</div>;
   }
 
 

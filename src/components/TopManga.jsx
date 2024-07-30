@@ -1,11 +1,11 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
-const Manga = () => {
+const TopManga = () => {
   const [topManga, setTopManga] = useState([]);
-  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     fetch('https://api.jikan.moe/v4/top/manga')
@@ -13,42 +13,49 @@ const Manga = () => {
       .then(data => {
         setTopManga(data.data); // Assuming the response has a 'data' property
         console.log(data);
-        setLoading(false);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
-        setLoading(false);
       });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className='bg bg-zinc-900 flex flex-col min-h-screen'>
-    <div className='flex-grow'>
-    <Navbar />
-    <h1 className='ml-10 mt-5 font-bold text-[30px] text-blue-500'>Top Manga</h1>
-    <ul>
-    <div className='grid px-10 mt-8 grid-cols-5 gap-y-5 gap-x-20 items-center'>
-        {topManga.map(manga => (
-          <div>
-            <a key={manga.mal_id} href= {`/onizuka/manga/${manga.mal_id}`}>
-              <img src={manga.images.webp.image_url} className='rounded-md w-[225px] h-[318px]' />
-              <li className='text-white font-medium max-w-[240px]'>{manga.title}</li>
-            </a>
+      <div className='flex-grow'>
+        <Navbar />
+        <h1 className='ml-10 mt-5 font-bold text-[30px] text-blue-500'>Top Manga</h1>
+        <ul>
+          <div className='grid px-10 mt-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-5 gap-x-20 items-center'>
+            {topManga.map(manga => (
+              <div key={manga.mal_id} className='relative w-[225px] h-[318px] group'>
+                <Link to={`/onizuka/manga/${manga.mal_id}`}>
+                  <img
+                    src={manga.images.webp.image_url}
+                    alt={manga.title}
+                    className='w-full h-full object-cover rounded-md'
+                  />
+                  <div className='absolute text-end items-end justify-end transition-transform duration-300 inset-0 flex flex-col p-2 rounded-md'>
+                    <div className='text-zinc-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-y-[-5%] duration-300 bg-black bg-opacity-70 p-2 rounded-md'>
+                      <p className='font-normal text-[0.8rem]'>
+                        {manga.synopsis?.length > 100
+                          ? `${manga.synopsis.substring(0, 100)}...`
+                          : manga.synopsis}
+                      </p>
+                    </div>
+                    <div className='text-zinc-100 flex flex-col bg-black bg-opacity-70 p-2 rounded-md'>
+                      <span className='text-zinc-400 text-[0.8rem] font-bold'>{manga.authors?.[0]?.name}</span>
+                      <span className='text-[1.1rem] font-bold'>{manga.title}</span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
+        </ul>
+      </div>
+      <Footer />
     </div>
-    </ul>
+  );
+};
 
-
-
-    </div>
-    <Footer/>
-  </div>
-  )
-}
-
-export default Manga
+export default TopManga;

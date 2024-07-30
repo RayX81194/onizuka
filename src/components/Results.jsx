@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 const Results = () => {
   const { searchTerm } = useParams();
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
 
@@ -18,7 +17,6 @@ const Results = () => {
       const data = await response.json();
       setResults(data.data);
       setHasMore(data.pagination.has_next_page);
-      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -40,9 +38,6 @@ const Results = () => {
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className='bg bg-zinc-900 flex flex-col min-h-screen'>

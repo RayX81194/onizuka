@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import search from "../assets/search.svg";
 
 const Hero = () => {
@@ -49,12 +49,12 @@ const Hero = () => {
       </div>
       <div className='grid md:grid-cols-2 gap-x-3'>
         {topAnime.map(anime => (
-          <a key={anime.mal_id} href={`/onizuka/anime/${anime.mal_id}`}>
+          <Link key={anime.mal_id} to={`/onizuka/anime/${anime.mal_id}`}>
             <div className='bg-zinc-800 hover:bg-zinc-600 transition duration-75 gap-x-2 rounded-3xl mt-3 flex py-1 px-3'>
               <img src={search} alt="search" className='w-[15px] h-[20px]' />
               <p className='font-normal text-zinc-4gi00 text-[0.8rem]'>{anime.title}</p>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

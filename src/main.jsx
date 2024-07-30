@@ -8,7 +8,9 @@ import Manga from "./components/Manga";
 import Error from "./components/Error";
 import Results from './components/Results';
 import './index.css'
+import { AnimatePresence } from 'framer-motion'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
     element: <Home/>,
     errorElement:<Error />
 },
-{
+{ 
   path:"/onizuka/topanime",
   element: <TopAnime/>,
   errorElement:<Error />
@@ -46,6 +48,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AnimatePresence>
     <RouterProvider router={router} />
+    </AnimatePresence>
   </React.StrictMode>,
 )
