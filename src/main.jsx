@@ -30,7 +30,7 @@ const router = createBrowserRouter([
   errorElement:<Error />
 },
 {
-  path: "/onizuka/results/:searchTerm",
+  path: "/onizuka/results/:searchid",
   element: <Results />,
   errorElement: <Error />
 },

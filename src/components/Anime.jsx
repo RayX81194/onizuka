@@ -81,23 +81,23 @@ const Info = () => {
               </button>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[17px] text-zinc-300 font-normal'>Rank</h1>
-                <h1 className='text-[17px] text-white font-medium'>{animeInfo.rank}</h1>
+                <h1 className='text-[17px] text-white font-medium'>{animeInfo.rank || "-"}</h1>
               </div>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[17px] text-zinc-300 font-normal'>Score</h1>
-                <h1 className='text-[17px] text-white font-medium'>{animeInfo.score}/10</h1>
+                <h1 className='text-[17px] text-white font-medium'>{animeInfo.score || "-"}/10</h1>
               </div>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[17px] text-zinc-300 font-normal'>Status</h1>
-                <h1 className='text-[17px] text-white font-medium'>{animeInfo.status}</h1>
+                <h1 className='text-[17px] text-white font-medium'>{animeInfo.status || "-"}</h1>
               </div>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[17px] text-zinc-300 font-normal'>Source</h1>
-                <h1 className='text-[17px] text-white font-medium'>{animeInfo.source}</h1>
+                <h1 className='text-[17px] text-white font-medium'>{animeInfo.source || "-"}</h1>
               </div>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[17px] text-zinc-300 font-normal'>Episodes</h1>
-                <h1 className='text-[17px] text-white font-medium'>{animeInfo.episodes}</h1>
+                <h1 className='text-[17px] text-white font-medium'>{animeInfo.episodes || "-"}</h1>
               </div>
             </div>
           </div>
