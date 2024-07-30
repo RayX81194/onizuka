@@ -8,6 +8,7 @@ const Results = () => {
   const { searchTerm } = useParams();
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading,setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(false);
 
   const fetchResults = async (page) => {
@@ -17,8 +18,10 @@ const Results = () => {
       const data = await response.json();
       setResults(data.data);
       setHasMore(data.pagination.has_next_page);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
+
     }
   };
 
@@ -37,6 +40,10 @@ const Results = () => {
       setPage((prevPage) => prevPage - 1);
     }
   };
+
+  if(loading) {
+    return <div>Loading</div>
+  }
 
 
   return (
