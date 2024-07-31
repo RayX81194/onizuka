@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from "../assets/logo.svg";
+import arrdown from "../assets/arrdown.svg";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { ChevronDownIcon} from '@heroicons/react/16/solid'
+
 
 const Navbar = () => {
   const [pickAnime, setPickAnime] = useState(null); // Updated state type
@@ -37,8 +40,9 @@ const Navbar = () => {
       <div className='flex gap-x-10'>
         <div>        
           <Menu>
-        <MenuButton className="inline-flex items-center py-3 rounded-md font-normal text-zinc-400">
+        <MenuButton className="inline-flex hover:text-zinc-200 transition items-center py-3 rounded-md font-normal text-zinc-400">
          Anime
+         <ChevronDownIcon className="size-5 fill-white/60" />
         </MenuButton>
 
         <MenuItems
@@ -62,6 +66,7 @@ const Navbar = () => {
           </MenuItem>
           <MenuItem>
             <button className="group font-normal flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+            <ul>
             {pickAnime && pickAnime.mal_id ? (
           <NavLink to={`/onizuka/anime/${pickAnime.mal_id}`}>
             <p className='font-normal text-white'>Pick a Anime</p>
@@ -69,6 +74,7 @@ const Navbar = () => {
         ) : (
           <li className='font-normal text-white'>Pick a Anime</li>
         )}
+            </ul>
             </button>
           </MenuItem>
         </MenuItems>
@@ -77,8 +83,9 @@ const Navbar = () => {
         <div>
             
         <Menu>
-        <MenuButton className="inline-flex items-center py-3 rounded-md font-normal text-zinc-400">
+        <MenuButton className="inline-flex hover:text-zinc-200 transition items-center py-3 rounded-md font-normal text-zinc-400">
           Manga
+          <ChevronDownIcon className="size-5 fill-white/60" />
         </MenuButton>
 
         <MenuItems
@@ -102,6 +109,7 @@ const Navbar = () => {
           </MenuItem>
           <MenuItem>
             <button className="group font-normal flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+            <ul>
             {pickManga && pickManga.mal_id ? (
           <NavLink to={`/onizuka/manga/${pickManga.mal_id}`}>
             <p className='font-normal text-white'>Pick a Manga</p>
@@ -109,6 +117,7 @@ const Navbar = () => {
         ) : (
           <li className='font-normal text-white'>Pick a Manga</li>
         )}
+            </ul>
             </button>
           </MenuItem>
         </MenuItems>
