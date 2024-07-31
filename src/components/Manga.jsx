@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const InfoManga = () => {
   const { searchid } = useParams();
   const [mangaInfo, setMangaInfo] = useState({});
+  const [characterlist, setCharacterList] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
+  
   const [loading, setLoading] = useState(true);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -18,13 +21,41 @@ const InfoManga = () => {
       .then(response => response.json())
       .then(data => {
         setMangaInfo(data.data);
-        console.log(data)
         setLoading(false)
       })
       .catch(error => {
         console.error('Error fetching data:', error);
         setMangaInfo({});
         setLoading(false)
+      });
+  }, [searchid]);
+
+
+  useEffect(() => {
+    fetch(`https://api.jikan.moe/v4/manga/${searchid}/recommendations`)
+      .then(response => response.json())
+      .then(data => {
+        const recommlist = data.data.slice(0, 6);
+        setRecommendations(recommlist);
+      })
+      .catch(error => {
+        console.error('Error fetching recommendations:', error);
+        setRecommendations([]);
+      });
+  }, [searchid]);
+
+  useEffect(() => {
+    fetch(`https://api.jikan.moe/v4/manga/${searchid}/characters`)
+      .then(response => response.json())
+      .then(data => {
+        const characterlistinfo = data.data.slice(0, 9);
+        setCharacterList(characterlistinfo);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setCharacterList([]);
+        setLoading(false);
       });
   }, [searchid]);
 
@@ -63,7 +94,7 @@ const InfoManga = () => {
             </div>
             <div className='flex items-center justify-between'>
               <h1 className='text-[17px] text-zinc-300 font-normal'>Chapters</h1>
-              <h1 className='text-[17px] text-white font-medium'>{mangaInfo.chapters}</h1>
+              <h1 className='text-[17px] text-white font-medium'>{mangaInfo.chapters || "-"}</h1>
             </div>
             </div>
         </div>
@@ -73,7 +104,7 @@ const InfoManga = () => {
           <li key={index} className=' px-3 py-1 bg-blue-800 bg-opacity-30 text-blue-500 text-[12px] rounded-xl font-bold'>{manga.name}</li>
         ))}
       </ul>
-      <h1 className='text-white max-w-[700px] mt-2 font-medium text-[40px]'>{mangaInfo.title}</h1>
+      <h1 className='text-white max-w-[700px] mt-2 font-medium text-[40px]'>{mangaInfo.title} ({mangaInfo.type})</h1>
       <h2 className='text-white font-normal max-w-[700px] text-[20px]'>{mangaInfo.title_english} · {mangaInfo.title_japanese}</h2>
       <h2 className='text-zinc-300 font-normal text-[20px]'>{mangaInfo.authors?.[0]?.name}</h2>
       <div className='mr-40'>
@@ -84,6 +115,39 @@ const InfoManga = () => {
         {isExpanded ? 'Read Less' : 'Read More'}
       </button>
       </div>
+      <h1 className='text-zinc-100 mt-7 font-normal text-2xl'>Characters:</h1>
+            <ul className='grid grid-cols-3 max-w-[900px] mt-5 gap-y-2 gap-x-5'>
+              {characterlist.map(character => (
+                <li key={character.character.mal_id} className='text-white'>
+                  <div className='flex items-center gap-x-3'>
+                    <img src={character.character.images.webp.image_url} alt={character.character.name} className='w-[55px] h-[80px]' />
+                    <div className='flex flex-col'>
+                    <span className='font-medium  text-blue-500 max-w-[200px] text-[20px]'>{character.character.name}</span>
+                    <span className='font-normal text-zinc-200 text-[13px]'>{character.role}</span>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+      <h1 className='text-zinc-100 mt-7 font-normal text-2xl'>Recommendations:</h1>
+      <ul className='grid grid-cols-3 max-w-[900px] mt-5 gap-y-10 gap-x-5'>
+      {recommendations.map(manga => (
+          <div key={manga.entry.mal_id} className='relative w-[225px] h-[318px] group'>
+          <Link to={`/onizuka/manga/${manga.entry.mal_id}`}>
+          <img
+                    src={manga.entry.images.webp.image_url}
+                    alt={manga.entry.title}
+                    className='md:w-full w-[160px] h-[250px] md:h-full object-cover rounded-md'
+             />
+             <div className='absolute text-start items-center justify-center sm:items-start sm:justify-end transition-transform duration-300 inset-0 flex flex-col p-2 rounded-md'>
+                    <div className=' text-zinc-100 flex flex-col bg-black bg-opacity-70 p-2 rounded-md'>
+                      <span className='text-[1.1rem] font-medium'>{manga.entry.title}</span>
+                    </div>
+                  </div>
+          </Link>
+            </div>
+        ))}
+      </ul>
         </div>
       </div>
 

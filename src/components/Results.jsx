@@ -71,7 +71,7 @@ const Results = () => {
 
                     <div className=' text-zinc-100 flex flex-col bg-black bg-opacity-70 p-2 rounded-md'>
                       <span className='text-zinc-400 text-[0.8rem] font-bold'>{anime.studios?.[0]?.name}</span>
-                      <span className='text-[1.1rem] font-bold'>{anime.title}</span>
+                      <span className='text-[1.1rem] font-bold'>{anime.title} ({anime.type})</span>
                     </div>
                   </div>
           </Link>
