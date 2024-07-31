@@ -1,6 +1,6 @@
 # Onizuka - A Anime and Manga Search Website
 
-This project is a web application that displays detailed information about various anime series. It fetches data from the Jikan API and presents it in a user-friendly manner with features like a "Read More" functionality for descriptions and uniform image display.
+This project is a web application that displays detailed information about various anime series. It fetches data from the Jikan API and presents it in a user-friendly manner with features like a "Pick a Anime or Manga", "Anime and Manga Search" and "Top Anime and Manga".
 
 ## Features
 
