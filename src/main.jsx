@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './components/Home'
+import AnimeSearch from './components/AnimeSearch'
+import MangaSearch from './components/MangaSearch'
 import TopAnime from './components/TopAnime'
 import TopManga from './components/TopManga'
 import Anime from "./components/Anime";
 import Manga from "./components/Manga";
 import Error from "./components/Error";
 import Results from './components/Results';
+import ResultsManga from './components/ResultsManga';
 import './index.css'
 import { AnimatePresence } from 'framer-motion'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -14,8 +16,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path:"/onizuka",
-    element: <Home/>,
+    path:"/onizuka/",
+    element: <AnimeSearch/>,
+    errorElement:<Error />
+},
+  {
+    path:"/onizuka/mangasearch",
+    element: <MangaSearch/>,
     errorElement:<Error />
 },
 { 
@@ -32,6 +39,11 @@ const router = createBrowserRouter([
 {
   path: "/onizuka/results/:searchid",
   element: <Results />,
+  errorElement: <Error />
+},
+{
+  path: "/onizuka/resultsmanga/:searchid",
+  element: <ResultsManga />,
   errorElement: <Error />
 },
 {

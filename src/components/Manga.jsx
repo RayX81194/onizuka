@@ -101,7 +101,7 @@ const InfoManga = () => {
         <div>
       <ul className='flex gap-x-5'>
         {mangaInfo.genres?.map((manga, index) => (
-          <li key={index} className=' px-3 py-1 bg-blue-800 bg-opacity-30 text-blue-500 text-[12px] rounded-xl font-bold'>{manga.name}</li>
+          <li key={index} className=' px-3 py-1 bg-red-800 bg-opacity-30 text-red-500 text-[12px] rounded-xl font-bold'>{manga.name}</li>
         ))}
       </ul>
       <h1 className='text-white max-w-[700px] mt-2 font-medium text-[40px]'>{mangaInfo.title} ({mangaInfo.type})</h1>
@@ -111,7 +111,7 @@ const InfoManga = () => {
       <p className='text-zinc-300 mt-5 text-[16px] font-normal'>
         {textToShow}{!isExpanded && '...'}
       </p>
-      <button className='text-white mt-2 font-bold' onClick={toggleReadMore}>
+      <button className='text-white mt-3 p-3 bg-zinc-800 hover:bg-zinc-700 transition rounded-lg font-bold' onClick={toggleReadMore}>
         {isExpanded ? 'Read Less' : 'Read More'}
       </button>
       </div>
@@ -122,7 +122,7 @@ const InfoManga = () => {
                   <div className='flex items-center gap-x-3'>
                     <img src={character.character.images.webp.image_url} alt={character.character.name} className='w-[55px] h-[80px]' />
                     <div className='flex flex-col'>
-                    <span className='font-medium  text-blue-500 max-w-[200px] text-[20px]'>{character.character.name}</span>
+                    <span className='font-medium  text-red-500 max-w-[200px] text-[20px]'>{character.character.name}</span>
                     <span className='font-normal text-zinc-200 text-[13px]'>{character.role}</span>
                     </div>
                   </div>

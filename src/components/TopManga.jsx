@@ -23,7 +23,7 @@ const TopManga = () => {
     <div className='bg bg-zinc-900 flex flex-col min-h-screen'>
       <div className='flex-grow'>
         <Navbar />
-        <h1 className='ml-10 mt-5 font-bold text-[30px] text-blue-500'>Top Manga</h1>
+        <h1 className='ml-10 mt-5 font-bold text-[30px] text-red-500'>Top Manga</h1>
         <ul>
           <div className='grid px-10 mt-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-5 gap-x-20 items-center'>
             {topManga.map(manga => (

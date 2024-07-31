@@ -4,7 +4,7 @@ import Footer from "./Footer"
 import "../index.css"
 import Navbar from './Navbar'
 
-const Home = () => {
+const AnimeSearch = () => {
   return (
       <div className='bg bg-zinc-900 flex flex-col min-h-screen'>
         <div className='flex-grow'>
@@ -17,4 +17,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default AnimeSearch
