@@ -30,7 +30,7 @@ const TopAnime = () => {
                   <img
                     src={anime.images.webp.image_url}
                     alt={anime.title}
-                    className='md:w-full w-[160px] h-[250px] md:h-full object-cover rounded-md'
+                    className='md:w-full w-[160px] h-[250px] md:h-full object-cover opacity-70 rounded-md'
                   />
                   <div className='absolute text-start items-center justify-center sm:items-start sm:justify-end transition-transform duration-300 inset-0 flex flex-col p-2 rounded-md'>
                     <div className='text-zinc-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-y-[-5%] duration-300 bg-black bg-opacity-70 p-2 rounded-md'>

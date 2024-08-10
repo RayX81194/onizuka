@@ -32,7 +32,7 @@ const HeroRed = () => {
       </h1>
       <p className='text-zinc-500 font-medium mb-7 text-[1.2rem] max-w-[300px] md:max-w-[400px] xl:max-w-full md:text-[1.4rem]'>Find Manga anywhere, anytime, anyplace</p>
       <form onSubmit={handleSearch}>
-        <div className='bg-zinc-800 w-[23rem] h-[3.5rem] md:w-[39rem] px-5  justify-between flex rounded-xl'>
+        <div className='bg-zinc-800 w-[22rem] xs:w-[30rem] h-[3.5rem] sm:w-[39rem] px-5  justify-between flex rounded-xl'>
           <input
             type="text"
             className='bg-zinc-800 outline-none font-normal w-[25rem] md:w-[34rem] md:h-[3.5rem]'
@@ -46,12 +46,12 @@ const HeroRed = () => {
       <div className='text-start my-3 '>
         <h2 className='font-normal text-zinc-400'>Trending Searches</h2>
       </div>
-      <div className='grid md:grid-cols-2 gap-x-3'>
+      <div className='flex flex-wrap max-w-[700px] items-center justify-center gap-x-3'>
         {topManga.map(manga => (
           <Link key={manga.mal_id} to={`/onizuka/manga/${manga.mal_id}`}>
             <div className='bg-zinc-800 hover:bg-zinc-600 transition duration-75 gap-x-2 rounded-3xl mt-3 flex py-1 px-3'>
               <img src={search} alt="search" className='w-[15px] h-[20px]' />
-              <p className='font-normal text-zinc-4gi00 text-[0.8rem]'>{manga.title} ({manga.type})</p>
+              <p className='font-normal text-zinc-300 text-[0.8rem]'>{manga.title} ({manga.type})</p>
             </div>
           </Link>
         ))}
