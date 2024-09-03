@@ -18,7 +18,6 @@ const ResultsManga = () => {
       const data = await response.json();
       setResults(data.data);
       setHasMore(data.pagination.has_next_page);
-      console.log(data)
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);

@@ -55,7 +55,6 @@ const Info = () => {
       .then((data) => {
         setAnimeInfo(data.data);
         setLoading(false);
-        console.log(data)
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -88,20 +87,6 @@ const Info = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
         setCharacterList([]);
-        setLoading(false);
-      });
-  }, [searchid]);
-
-  useEffect(() => {
-    fetch(`https://api.jikan.moe/v4/anime/${searchid}/themes`)
-      .then((response) => response.json())
-      .then((data) => {
-        setthemes(data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setthemes([]);
         setLoading(false);
       });
   }, [searchid]);
@@ -282,77 +267,7 @@ const Info = () => {
                 </a>
               ))}
             </ul>
-
-            <div className="grid grid-cols-2 mr-4 xs:mr-6 md:mr-10 lg:mr-24 xl:mr-40 gap-x-10">
-              <div>
-                <h1 className="text-zinc-100 mt-7 font-normal text-[23px]  md:text-[26px]">
-                  Openings:
-                </h1>
-                <ul className="grid grid-rows-1 max-w-[900px] mt-5 gap-y-2 gap-x-5">
-                  {themes.openings
-                    ?.slice(0, visibleOpenings)
-                    .map((op, index) => (
-                      <li
-                        key={index}
-                        className="transition text-zinc-400 text-[0.9rem] lg:text-[1rem] font-normal"
-                      >
-                        {op}
-                      </li>
-                    ))}
-                </ul>
-                {isShowingMoreOpenings ? (
-                  <button
-                    onClick={handleShowLessOpenings}
-                    className="mt-2 p-2 font-bold text-white"
-                  >
-                    Show Less
-                  </button>
-                ) : (
-                  visibleOpenings < (themes.openings?.length || 0) && (
-                    <button
-                      onClick={handleShowMoreOpenings}
-                      className="mt-2 p-2 font-bold text-white"
-                    >
-                      Show More
-                    </button>
-                  )
-                )}
-              </div>
-              <div>
-                <h1 className="text-zinc-100 mt-7 font-normal text-[23px]  md:text-[26px]">
-                  Endings:
-                </h1>
-                <ul className="grid grid-rows-1 max-w-[900px] mt-5 gap-y-2 gap-x-5">
-                  {themes.endings
-                    ?.slice(0, visibleEndings)
-                    .map((end, index) => (
-                      <li
-                        key={index}
-                        className="transition text-zinc-400 font-normal"
-                      >
-                        {end}
-                      </li>
-                    ))}
-                </ul>
-                {isShowingMoreEndings ? (
-                  <button
-                    onClick={handleShowLessEndings}
-                    className="mt-2 p-2 font-bold text-white"
-                  >
-                    Show Less
-                  </button>
-                ) : (
-                  visibleEndings < (themes.endings?.length || 0) && (
-                    <button
-                      onClick={handleShowMoreEndings}
-                      className="mt-2 p-2 font-bold text-white"
-                    >
-                      Show More
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
+            
             <h1 className="text-zinc-100 mt-7 font-normal text-[23px]  md:text-[26px]">
               Recommendations:
             </h1>

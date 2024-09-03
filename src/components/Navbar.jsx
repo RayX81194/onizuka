@@ -7,30 +7,6 @@ import { ChevronDownIcon} from '@heroicons/react/16/solid'
 
 
 const Navbar = () => {
-  const [pickAnime, setPickAnime] = useState(null); // Updated state type
-  const [pickManga, setPickManga] = useState(null); // Updated state type
-
-  useEffect(() => {
-    fetch('https://api.jikan.moe/v4/random/anime')
-      .then(response => response.json())
-      .then(data => {
-        setPickAnime(data.data); // Accessing `data.data` directly if the structure matches
-      })
-      .catch(error => {
-        console.error("Error occurred:", error); // Improved error logging
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch('https://api.jikan.moe/v4/random/manga')
-      .then(response => response.json())
-      .then(data => {
-        setPickManga(data.data); // Accessing `data.data` directly if the structure matches
-      })
-      .catch(error => {
-        console.error("Error occurred:", error); // Improved error logging
-      });
-  }, []);
 
   return (
     <nav className='w-full px-5 md:px-12 py-5 text-white flex items-center justify-between'>
@@ -64,19 +40,6 @@ const Navbar = () => {
             </NavLink>
             </button>
           </MenuItem>
-          <MenuItem>
-            <button className="group font-normal flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
-            <ul>
-            {pickAnime && pickAnime.mal_id ? (
-          <NavLink to={`/onizuka/anime/${pickAnime.mal_id}`}>
-            <p className='font-normal text-white'>Pick a Anime</p>
-          </NavLink>
-        ) : (
-          <li className='font-normal text-white'>Pick a Anime</li>
-        )}
-            </ul>
-            </button>
-          </MenuItem>
         </MenuItems>
       </Menu> 
         </div>
@@ -105,19 +68,6 @@ const Navbar = () => {
             <NavLink to="/onizuka/topmanga">
               <span>Top Manga</span>
             </NavLink>
-            </button>
-          </MenuItem>
-          <MenuItem>
-            <button className="group font-normal flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
-            <ul>
-            {pickManga && pickManga.mal_id ? (
-          <NavLink to={`/onizuka/manga/${pickManga.mal_id}`}>
-            <p className='font-normal text-white'>Pick a Manga</p>
-          </NavLink>
-        ) : (
-          <li className='font-normal text-white'>Pick a Manga</li>
-        )}
-            </ul>
             </button>
           </MenuItem>
         </MenuItems>
